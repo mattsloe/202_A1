@@ -47,8 +47,7 @@ void shuffle(char** hint)
 // //if strcmp(input,result)==0 continue until !(round<ARRAY_SIZE)else repeat that round
 void playGame(char** hint)
 {
-  printf("This is a game that tests typing speed\n");
-  printf("Type the following words:");
+  printf("\nThis is a game that tests typing speed\n\nType the following words:\n");
   struct timeval starttime;
   struct timeval endtime;
   struct timeval result;
@@ -59,7 +58,7 @@ void playGame(char** hint)
   for(int round = 0; round < ARRAY_SIZE; round++){
     do{
       //display prompt
-      printf("\nword #%i is %s ",round,hint[round]);
+      printf("word #%i is %s: ",round+1,hint[round]);
       //start timer
       gettimeofday(&starttime,NULL);
       //get user input
@@ -79,7 +78,7 @@ void playGame(char** hint)
       }
     }while(isCorrect == 0);
   }
-  printf("You took %ld seconds and %06ld microseconds",totalTime.tv_sec, totalTime.tv_usec);
+  printf("You took %ld seconds and %06ld microseconds\n",totalTime.tv_sec, totalTime.tv_usec);
 
 }
 
