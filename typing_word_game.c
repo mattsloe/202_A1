@@ -18,7 +18,6 @@ int main()
     //play game
   playGame(hints);
     //exit
-  printf("Exiting");
   return 0;
 }
 
@@ -50,15 +49,17 @@ void playGame(char** hint)
 {
   printf("This is a game that tests typing speed\n");
   printf("Type the following words:");
-  struct timeval  starttime;
-  struct timeval  endtime;
-  struct timeval  result;
+  struct timeval starttime;
+  struct timeval endtime;
+  struct timeval result;
+  struct timeval totalTime;
+  totalTime = (struct timeval){ 0 };
   int isCorrect = 0;
   char inString[10];
   for(int round = 0; round < ARRAY_SIZE; round++){
     do{
       //display prompt
-      printf("\nword #%i is %s",round,hint[round]);
+      printf("\nword #%i is %s ",round,hint[round]);
       //start timer
       gettimeofday(&starttime,NULL);
       //get user input
@@ -66,11 +67,12 @@ void playGame(char** hint)
       //stop timer
       gettimeofday(&endtime,NULL);
       //get result
-      timersub(&endtime,&starttime,&result);
       //check user input
       if(strcmp(hint[round],inString) == 0){
         isCorrect = 1;
-        printf("Correct! %ld.%06ld\n",result.tv_sec,result.tv_usec);
+        timersub(&endtime,&starttime,&result);
+        timeradd(&totalTime,&result,&totalTime); 
+        //printf("Correct! %ld.%06ld\n",result.tv_sec,result.tv_usec);
       }else{
         isCorrect = 0;
       }
