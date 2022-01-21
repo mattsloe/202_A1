@@ -32,7 +32,7 @@ void shuffle(char** hint)
       hint[i] = hint[j];
     }
     hint[j] = source[i];
-  }
+    }
 }
 
 
@@ -40,7 +40,7 @@ void shuffle(char** hint)
 //*Given hint[] ARRAY_SIZE
 // int round = 0;
 // //Display Prompt
-// 
+//
 // //start timer
 // //get user input
 // //end timer
@@ -48,27 +48,29 @@ void shuffle(char** hint)
 // //if strcmp(input,result)==0 continue until !(round<ARRAY_SIZE)else repeat that round
 void playGame(char** hint)
 {
-  struct timeval * starttime = NULL;
-  struct timeval * endtime = NULL;
-  struct timeval * result = NULL;
+  printf("This is a game that tests typing speed\n");
+  printf("Type the following words:");
+  struct timeval  starttime;
+  struct timeval  endtime;
+  struct timeval  result;
   int isCorrect = 0;
-  char* inString = NULL;
+  char inString[10];
   for(int round = 0; round < ARRAY_SIZE; round++){
     do{
       //display prompt
-      printf("%s\n",hint[round]);
+      printf("\nword #%i is %s",round,hint[round]);
       //start timer
-      gettimeofday(starttime,NULL);
+      gettimeofday(&starttime,NULL);
       //get user input
       scanf("%s",inString);
       //stop timer
-      gettimeofday(endtime,NULL);
+      gettimeofday(&endtime,NULL);
       //get result
-      timersub(endtime,starttime,result);
+      timersub(&endtime,&starttime,&result);
       //check user input
       if(strcmp(hint[round],inString) == 0){
         isCorrect = 1;
-        printf("Correct! %ld.%06d\n",result->tv_sec,result->tv_usec);
+        printf("Correct! %ld.%06ld\n",result.tv_sec,result.tv_usec);
       }else{
         isCorrect = 0;
       }
@@ -104,7 +106,3 @@ int strcmp(char* l, char* r)
   }
   return a-b;
 }
-
-
-
-
