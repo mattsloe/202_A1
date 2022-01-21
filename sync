@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -t *.c Makefile mcecs:CS201/A1/
