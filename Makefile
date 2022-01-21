@@ -10,7 +10,7 @@ CFLAGS=-Wall -Og
 DFLAGS=-g
 # For additional libraries, e.g. -lm
 LDFLAGS=
-PROGS=_typing_word_game
+PROGS=typing_word_game
 
 all: $(PROGS)
 
