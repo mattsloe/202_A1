@@ -72,7 +72,8 @@ void playGame(char** hint)
         isCorrect = 1;
         timersub(&endtime,&starttime,&result);
         timeradd(&totalTime,&result,&totalTime); 
-        //printf("Correct! %ld.%06ld\n",result.tv_sec,result.tv_usec);
+        printf("Correct! %ld.%06ld\n",result.tv_sec,result.tv_usec);
+        printf("Total:%ld.%06ld\n",totalTime.tv_sec, totalTime.tv_usec);
       }else{
         isCorrect = 0;
       }
