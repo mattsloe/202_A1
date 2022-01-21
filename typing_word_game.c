@@ -24,18 +24,14 @@ int main()
 
 //Fisher-Yates Shuffle
 void shuffle(char** hint)
-   {
-     for(int i = 0; i  < ARRAY_SIZE; i++){
+{
+  for(int i = 0; i  < ARRAY_SIZE; i++){
     //draw a random number between 0 and i
     int j = rand() % (i+1);
     if(j != i) {
       hint[i] = hint[j];
     }
     hint[j] = source[i];
-  }
-  printf("Shuffled deck:\n");
-  for(int i = 0; i < ARRAY_SIZE; i++){
-    printf("%s ",hint[i]);
   }
 }
 
