@@ -36,15 +36,6 @@ void shuffle(char** hint)
 
 
 /*Play Game*/
-//*Given hint[] ARRAY_SIZE
-// int round = 0;
-// //Display Prompt
-//
-// //start timer
-// //get user input
-// //end timer
-// //compare result
-// //if strcmp(input,result)==0 continue until !(round<ARRAY_SIZE)else repeat that round
 void playGame(char** hint)
 {
   printf("\nThis is a game that tests typing speed\n\nType the following words:\n");
@@ -52,7 +43,7 @@ void playGame(char** hint)
   struct timeval endtime;
   struct timeval result;
   struct timeval totalTime;
-  totalTime = (struct timeval){ 0 };
+  totalTime = (struct timeval){ 0 }; 
   int isCorrect = 0;
   char inString[10];
   for(int round = 0; round < ARRAY_SIZE; round++){
@@ -71,8 +62,6 @@ void playGame(char** hint)
         isCorrect = 1;
         timersub(&endtime,&starttime,&result);
         timeradd(&totalTime,&result,&totalTime); 
-        //printf("Correct! %ld.%06ld\n",result.tv_sec,result.tv_usec);
-        //printf("Total:%ld.%06ld\n",totalTime.tv_sec, totalTime.tv_usec);
       }else{
         isCorrect = 0;
       }
@@ -82,18 +71,8 @@ void playGame(char** hint)
 
 }
 
-/*Timer Implementation*/
-//The timer works by storing a timeval (struct timeval startTime) at the beginning of the code to be executed
-//and at the end of the code (struct timeval endTime).  Timersub subtracts the two and returns the result to
-//the passed in string
-//struct timeval * startTime; struct timeval * endTime; struct timeval * result;
-//gettimeofday(startTime); //set startTime
-// *get user input*
-//gettimeofday(endTime); //set endtime
-//timersub(endTime,startTime,result); //result = endTime-startTime
-
 //compares the cstring parameters by ascii value
-//post: return 0 if l and r are identical
+//post: return 0 if l and r are identical, otherwise, numerical result of l[i]-r[i] if they are different
 int strcmp(char* l, char* r)
 {
   int a = l[0];
